@@ -11,17 +11,19 @@ public class Customer {
     @Column(name = "CUSTOMER_ID")
     private int id;
     @Column(name = "NAME")
-    private String name;
+    private String firstName;
     @Column(name = "LAST_NAME")
     private String lastName;
+    private final String email;
+    private final String phoneNumber;
 
-    private Customer() {
-    }
-
-    public Customer(String name, String lastName) {
-        this.name = name;
+    public Customer(String firstName, String lastName, String email, String phoneNumber) {
+        this.firstName = firstName;
         this.lastName = lastName;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
     }
+
 
     public int getId() {
         return id;

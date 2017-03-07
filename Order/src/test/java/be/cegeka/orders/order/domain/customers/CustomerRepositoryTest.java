@@ -33,8 +33,8 @@ public class CustomerRepositoryTest {
 
     @Before
     public void setupDatabase() {
-        seppe = new Customer("Seppe", "Gielen");
-        johan = new Customer("Johan", "Vdw");
+        seppe = new Customer("Seppe", "Gielen", "Seppe.", "04");
+        johan = new Customer("Johan", "Vdw", "Johan.", "04");
 
         entityManager.persist(seppe);
         entityManager.persist(johan);
@@ -44,6 +44,7 @@ public class CustomerRepositoryTest {
     public void getAllShouldReturnAll() throws Exception {
         assertThat(customerRepository.getAll()).contains(seppe, johan);
     }
+
 
     @After
     public void cleanDatabase(){

@@ -14,8 +14,14 @@ public class Customer {
     private String firstName;
     @Column(name = "LAST_NAME")
     private String lastName;
-    private final String email;
-    private final String phoneNumber;
+    @Column(name = "EMAIL")
+    private String email;
+    @Column(name = "PHONENUMBER")
+    private String phoneNumber;
+
+    private Customer() {
+
+    }
 
     public Customer(String firstName, String lastName, String email, String phoneNumber) {
         this.firstName = firstName;
@@ -24,6 +30,21 @@ public class Customer {
         this.phoneNumber = phoneNumber;
     }
 
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
 
     public int getId() {
         return id;

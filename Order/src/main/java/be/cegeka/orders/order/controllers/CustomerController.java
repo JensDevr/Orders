@@ -9,11 +9,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.inject.Inject;
+import javax.transaction.Transactional;
+import java.util.List;
 
 /**
  * Created by jensde on 7/03/2017.
  */
 @RestController
+@Transactional
 public class CustomerController {
     @Inject
     private CustomerService customerService;
@@ -24,5 +27,10 @@ public class CustomerController {
                             @RequestParam(value = "email", required = true)String email,
                             @RequestParam(value = "phoneNumber", required = true)String phoneNumber){
         customerService.addCustomer(firstName, lastName, email, phoneNumber);
+    }
+
+    @RequestMapping(method = RequestMethod.GET)
+    public List<Customer> getAllCustomers(){
+    return customerService.getAllCustomers();
     }
 }

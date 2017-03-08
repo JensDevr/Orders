@@ -45,6 +45,13 @@ public class CustomerRepositoryTest {
         assertThat(customerRepository.getAll()).contains(seppe, johan);
     }
 
+    @Test
+    public void addCustomer_ShouldAddCustomer() throws Exception {
+        Customer customer = new Customer("Jens", "Devriendt", "Jens.", "04");
+        customerRepository.addCustomer(customer);
+        assertThat(entityManager.find(Customer.class, customer.getId())).isEqualToComparingFieldByField(customer);
+
+    }
 
     @After
     public void cleanDatabase(){

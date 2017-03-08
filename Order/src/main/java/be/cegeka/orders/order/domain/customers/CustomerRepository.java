@@ -16,5 +16,6 @@ public class CustomerRepository {
     }
 
     public void addCustomer(Customer customer) {
+        entityManager.persist(customer);
     }
 }

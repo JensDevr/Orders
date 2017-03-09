@@ -1,6 +1,10 @@
 package be.cegeka.orders.order.domain.customers;
 
+import be.cegeka.orders.order.domain.orders.Order;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "CUSTOMERS")
@@ -18,6 +22,8 @@ public class Customer {
     private String email;
     @Column(name = "PHONENUMBER")
     private String phoneNumber;
+
+    private List<Order> orders = new ArrayList<>();
 
     private Customer() {
 
@@ -48,5 +54,13 @@ public class Customer {
 
     public int getId() {
         return id;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void addOrder(Order order) {
+        orders.add(order);
     }
 }

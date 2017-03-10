@@ -6,6 +6,8 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static javax.persistence.CascadeType.ALL;
+
 @Entity
 @Table(name = "CUSTOMERS")
 public class Customer {
@@ -22,6 +24,9 @@ public class Customer {
     private String email;
     @Column(name = "PHONENUMBER")
     private String phoneNumber;
+
+    @OneToMany(cascade = ALL)
+    @JoinColumn(name = "CUSTOMER_ID", nullable = false)
 
     private List<Order> orders = new ArrayList<>();
 

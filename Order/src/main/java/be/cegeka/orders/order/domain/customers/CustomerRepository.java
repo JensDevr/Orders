@@ -20,6 +20,6 @@ public class CustomerRepository {
     }
 
     public Customer getCustomer(int id) {
-        return entityManager.createQuery("select c from Customer c", Customer.class).getSingleResult();
+        return entityManager.createQuery("select c from Customer c where c.id = :id", Customer.class).setParameter("id", id).getSingleResult();
     }
 }

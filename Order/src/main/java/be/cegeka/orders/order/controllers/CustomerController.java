@@ -17,6 +17,7 @@ import java.util.List;
  */
 @RestController
 @Transactional
+@RequestMapping(path = "/customer")
 public class CustomerController {
     @Inject
     private CustomerService customerService;

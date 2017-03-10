@@ -7,11 +7,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.inject.Inject;
+import javax.transaction.Transactional;
 
 /**
  * Created by jensde on 9/03/2017.
  */
 @RestController
+@Transactional
 public class OrderController {
 
     @Inject

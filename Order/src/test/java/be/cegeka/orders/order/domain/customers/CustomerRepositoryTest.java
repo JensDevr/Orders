@@ -53,6 +53,13 @@ public class CustomerRepositoryTest {
 
     }
 
+    @Test
+    public void getCustomer_ShouldGetCustomer() throws Exception {
+
+        assertThat(customerRepository.getCustomer(seppe.getId())).isEqualTo(seppe);
+
+    }
+
     @After
     public void cleanDatabase(){
         entityManager.clear();

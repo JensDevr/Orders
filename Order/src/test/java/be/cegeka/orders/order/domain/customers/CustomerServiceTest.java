@@ -51,4 +51,16 @@ public class CustomerServiceTest {
         assertThat(customerService.getAllCustomers()).contains(customer1, customer2);
 
     }
+
+    @Test
+    public void getByID_ShouldReturnCustomer() throws Exception {
+
+        Customer customer1 = new Customer("Jens", "Devriendt", "Jens.", "04");
+
+        when(customerRepository.getCustomer(8)).thenReturn(customer1);
+        Customer customer = customerService.getByID(8);
+        assertThat(customer).isEqualTo(customer1);
+
+
+    }
 }

@@ -60,6 +60,13 @@ public class CustomerRepositoryTest {
 
     }
 
+    @Test
+    public void getCustomer_CustomerDoesNotExist() throws Exception {
+        int id = 13;
+        assertThat(customerRepository.getCustomer(id)).isEqualTo(null);
+
+    }
+
     @After
     public void cleanDatabase(){
         entityManager.clear();

@@ -27,7 +27,6 @@ public class Customer {
 
     @OneToMany(cascade = ALL)
     @JoinColumn(name = "CUSTOMER_ID", nullable = false)
-
     private List<Order> orders = new ArrayList<>();
 
     private Customer() {

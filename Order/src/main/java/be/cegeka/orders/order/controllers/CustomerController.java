@@ -3,10 +3,7 @@ package be.cegeka.orders.order.controllers;
 
 import be.cegeka.orders.order.domain.customers.Customer;
 import be.cegeka.orders.order.domain.customers.CustomerService;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
 import javax.transaction.Transactional;
@@ -33,5 +30,11 @@ public class CustomerController {
     @RequestMapping(method = RequestMethod.GET)
     public List<Customer> getAllCustomers(){
     return customerService.getAllCustomers();
+    }
+
+
+    @RequestMapping(method = RequestMethod.GET, path = "/:id")
+    public Customer getByID(@PathVariable(value = "id", required = true)int id) {
+        return customerService.getByID(id);
     }
 }

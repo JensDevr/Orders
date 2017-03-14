@@ -2,10 +2,8 @@ package be.cegeka.orders.order.domain.customers;
 
 import be.cegeka.orders.order.OrderApplication;
 import org.assertj.core.api.Assertions;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
+import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
@@ -23,6 +21,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 @ContextConfiguration(classes = OrderApplication.class)
 @Transactional
 public class CustomerRepositoryTest {
+
+    @Rule
+    public ExpectedException expectedException = ExpectedException.none();
 
     @PersistenceContext
     private EntityManager entityManager;
@@ -62,8 +63,10 @@ public class CustomerRepositoryTest {
 
     @Test
     public void getCustomer_CustomerDoesNotExist() throws Exception {
-        int id = 13;
-        assertThat(customerRepository.getCustomer(id)).isEqualTo(null);
+        int id = -1;
+        expectedException.expect(RuntimeException.class);
+        expectedException.expectMessage("No customer found for id: " + id);
+        customerRepository.getCustomer(id);
 
     }
 

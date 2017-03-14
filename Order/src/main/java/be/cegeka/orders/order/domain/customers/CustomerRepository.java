@@ -2,6 +2,7 @@ package be.cegeka.orders.order.domain.customers;
 
 import javax.inject.Named;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
@@ -20,6 +21,11 @@ public class CustomerRepository {
     }
 
     public Customer getCustomer(int id) {
-        return entityManager.createQuery("select c from Customer c where c.id = :id", Customer.class).setParameter("id", id).getSingleResult();
+        try {
+            return entityManager.createQuery("select c from Customer c where c.id = :id", Customer.class).setParameter("id", id).getSingleResult();
+        }
+        catch (NoResultException ex){
+            throw new RuntimeException("No customer found for id: " + id);
+        }
     }
 }

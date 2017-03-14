@@ -33,7 +33,7 @@ public class CustomerController {
     }
 
 
-    @RequestMapping(method = RequestMethod.GET, path = "/:id")
+    @RequestMapping(method = RequestMethod.GET, path = "/{id}")
     public Customer getByID(@PathVariable(value = "id", required = true)int id) {
         return customerService.getByID(id);
     }

@@ -29,6 +29,13 @@ public class OrderControllerTest {
 
         orderController.addOrder(8,7, "Smurfs");
         verify(orderService).addOrder(8, 7, "Smurfs");
+    }
+
+    @Test
+    public void addPreviousOrder_ShouldAddPreviousOrder() throws Exception {
+
+        orderController.addPreviousOrder(8,1);
+        verify(orderService).addPreviousOrder(8, 1);
 
     }
 }

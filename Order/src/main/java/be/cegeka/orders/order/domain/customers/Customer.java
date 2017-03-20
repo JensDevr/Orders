@@ -67,4 +67,17 @@ public class Customer {
     public void addOrder(Order order) {
         orders.add(order);
     }
+
+    public void addPreviousOrder(int orderID) {
+        orders.add(getOrder(orderID).reOrder());
+    }
+
+    private Order getOrder(int orderID) {
+        for (Order order : orders) {
+           if(order.getId() == orderID){
+               return order;
+           }
+        }
+        return null;
+    }
 }

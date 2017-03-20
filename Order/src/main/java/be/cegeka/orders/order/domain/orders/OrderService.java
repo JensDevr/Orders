@@ -16,4 +16,8 @@ public class OrderService {
     public void addOrder(int customerID, int amount, String description) {
         customerRepository.getCustomer(customerID).addOrder(new Order(amount, description));
     }
+
+    public void addPreviousOrder(int customerID, int orderID) {
+        customerRepository.getCustomer(customerID).addPreviousOrder(orderID);
+    }
 }

@@ -28,11 +28,19 @@ public class Order {
         this.description = description;
     }
 
+    public int getId() {
+        return id;
+    }
+
     public int getAmount() {
         return amount;
     }
 
     public String getDescription() {
         return description;
+    }
+
+    public Order reOrder() {
+        return new Order(amount, description);
     }
 }

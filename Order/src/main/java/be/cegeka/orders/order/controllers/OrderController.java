@@ -25,4 +25,10 @@ public class OrderController {
                          @RequestParam(value = "description")String description){
         orderService.addOrder(customerID, amount, description);
     }
+
+    @RequestMapping(method = RequestMethod.POST)
+    public void addPreviousOrder(@RequestParam(value = "customerId")int customerID,
+                                 @RequestParam(value = "orderID")int orderID){
+        orderService.addPreviousOrder(customerID, orderID);
+    }
 }
